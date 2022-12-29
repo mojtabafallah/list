@@ -58,7 +58,6 @@ export default {
             if(value) this.ageNormal ++; else this.ageNormal--;
         }
     }
-
 }
 </script>
 
