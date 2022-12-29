@@ -36,12 +36,26 @@ export default {
             ],
             user_data: {
 
-            }
+            },
+            count: 0,
+            ageNormal : 0,
+            ageFlag : 3,
+            showMessage: false
         }
     },
     computed: {
         checkAge() {
             return this.users.filter(item => item.age > 32);
+        }
+    }, watch:{
+       ageNormal(newValue,oldValue){
+         this.showMessage = newValue <= this.ageFlag;
+       }
+    },
+    methods:{
+        addCount(){ this.count++ },
+        plusCount(value){
+            if(value) this.ageNormal ++; else this.ageNormal--;
         }
     }
 
@@ -71,6 +85,15 @@ export default {
         <li v-for="user in checkAge">{{ user.name + '-' + user.age }}</li>
 
     </ul>
+    <h2>Count:{{ count }}</h2>
+    <button @click="addCount()">test</button>
+
+    <hr>
+    <h2>your age: {{ ageNormal }}</h2>
+    <p v-if="showMessage">you are baby</p>
+    <p v-else> you  are man</p>
+    <button @click="plusCount(true)">+</button>
+    <button @click="plusCount(false)">-</button>
 </template>
 <style>
 
