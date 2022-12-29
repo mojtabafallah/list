@@ -42,7 +42,8 @@ export default {
             ageFlag : 3,
             showMessage: false,
             color: "",
-            color2: "#fff"
+            color2: "#fff",
+            family: "test"
         }
     },
     computed: {
@@ -59,7 +60,26 @@ export default {
         plusCount(value){
             if(value) this.ageNormal ++; else this.ageNormal--;
         }
+    },
+    beforeCreate(){
+        alert('brefore create');
+    },
+    created(){
+        alert(' created');
+    },beforeMount(){
+        alert(' beformonte');
+    },mounted(){
+        alert(' mounted');
+    },beforeUpdate(){
+        alert(' beforeUpdate');
+    },updated(){
+        alert(' updated');
+    },beforeDestroy(){
+        alert('befor destroy');
+    },destroyed(){
+        alert('destoyrd');
     }
+    
 }
 </script>
 
@@ -109,6 +129,11 @@ export default {
     <hr>
     <input type="color" v-model="color2">
     <p :style="{backgroundColor: color2}">test</p>
+    <hr>
+    <input type="text" v-model.lazy="family">{{ family }}
+    <hr>
+    <input type="text" ref="desRef">
+    <button @click=""></button>
 </template>
 <style>
 
