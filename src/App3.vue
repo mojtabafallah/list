@@ -40,7 +40,9 @@ export default {
             count: 0,
             ageNormal : 0,
             ageFlag : 3,
-            showMessage: false
+            showMessage: false,
+            color: "",
+            color2: "#fff"
         }
     },
     computed: {
@@ -93,6 +95,20 @@ export default {
     <p v-else> you  are man</p>
     <button @click="plusCount(true)">+</button>
     <button @click="plusCount(false)">-</button>
+    <hr>
+
+    <hr>
+    <select name="favColor" id="" v-model="color">
+        <option value="">Select Color</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="orange">orange</option>
+    </select>
+    <p :style="{backgroundColor: color}">{{ color }}</p>
+    <hr>
+    <input type="color" v-model="color2">
+    <p :style="{backgroundColor: color2}">test</p>
 </template>
 <style>
 
